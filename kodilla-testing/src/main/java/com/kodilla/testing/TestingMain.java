@@ -1,24 +1,38 @@
 package com.kodilla.testing;
 
-import com.sun.source.util.SourcePositions;
+import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.user.SimpleUser;
+
 
 public class TestingMain {
+
     public static void main(String[] args) {
-        System.out.println("Moduł 6. Wprowadzenie to testowania oprogramowania");
-        String word1 = "lampara de techo, Iguana, Yeti";
-        // zrobiłem wypisanie na ekran, dla sprawdzenia zwracanego Stringa samogłoskowego
-        System.out.println(vowels(word1));
-    }
+        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
-    public static String vowels(String word) {
-        char tab[] = word.toCharArray();
-        StringBuilder sb = new StringBuilder();
+        String result = simpleUser.getUsername();
 
-        for (char i : tab) {
-            if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u' || i == 'y' || i == 'A' || i == 'E' || i == 'I' || i == 'O' || i == 'U' || i == 'Y') {
-                sb.append(i);
-            }
+        if (result.equals("theForumUser")) {
+            System.out.println("test OK");
+        } else {
+            System.out.println("Error!");
         }
-        return sb.toString();
+
+        Calculator calc = new Calculator(9, 5);
+        int c = 9 + 5;
+        int d = 9 - 5;
+
+
+
+        if(c == calc.add()){
+            System.out.println("Wykonano poprawne funkcję dodawania");
+        } else {
+            System.out.println("Error!");
+        }
+
+        if(d == calc.subtract()){
+            System.out.println("Wykonano poprawne funkcję odejmowania");
+        } else {
+            System.out.println("Error!");
+        }
     }
 }
