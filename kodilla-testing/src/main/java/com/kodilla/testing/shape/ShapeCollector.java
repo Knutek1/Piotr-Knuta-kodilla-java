@@ -6,7 +6,7 @@ import java.util.List;
 public class ShapeCollector {
 private List<Shape> list = new ArrayList<>();
 
-     void addFigure(Shape shape){
+    void addFigure(Shape shape){
          list.add(shape);
 
      }
