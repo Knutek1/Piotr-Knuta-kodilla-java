@@ -19,7 +19,7 @@ public class StreamMain {
         System.out.println(mapOfUser.size());
 
         mapOfUser.entrySet().stream()
-                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .map(entry -> entry.getKey() + ":ddd " + entry.getValue())
                 .forEach(System.out::println);
 
 
