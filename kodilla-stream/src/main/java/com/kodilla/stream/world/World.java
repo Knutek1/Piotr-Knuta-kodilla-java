@@ -16,6 +16,10 @@ public class World {
     }
 
     public BigDecimal getPeopleQuantity() {
+
+        continentList.stream()
+                .flatMap(continent -> continent.countryList.stream())
+                .forEach(System.out::println);
         return continentList.stream()
                 .flatMap(continent -> continent.countryList.stream())
                 .map(Country::getPopulation)
