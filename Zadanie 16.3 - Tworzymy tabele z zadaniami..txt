@@ -1,0 +1,60 @@
+create table ISSUESLISTS
+(
+    ID serial,
+        NAME VARCHAR (50) charset utf8 not null
+);
+create table ISSUES
+(
+    ID serial,
+    ISSUESLIST_ID bigint unsigned not null,
+        foreign key (ISSUESLIST_ID) references ISSUESLISTS(ID),
+        SUMMARY varchar (100) charset utf8 not null,
+        DESCRIPTION varchar (1024),
+    USER_ID_ASSIGNEDTO bigint unsigned not null,
+        foreign key (USER_ID_ASSIGNEDTO) references USERS (ID)
+);
+commit ;
+insert into ISSUESLISTS (NAME)
+values  ("ToDo");
+insert into ISSUESLISTS (NAME)
+values  ("In progress");
+insert into ISSUESLISTS (NAME)
+values  ("Done");
+commit ;
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1,"Umyć się","Dokładnie", 1);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1,"Umyć zęby","W szparach także", 2);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1,"Osiodłać konia","Przy użyciu siodła", 3);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1,"Ulepić bałwana","Najpierw ukulać kule i połączyć je pionowo", 4);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1,"Wizyta u fryzjera","Podcinka", 5);
+commit ;
+select * from ISSUES;
+select * from ISSUESLISTS;
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2,"Ogolić się","Ogolony w 50%", 1);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2,"Zjesć sniadanie","Zjedzone w 50%", 1);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2,"Skopać ogródek","Wybór szpadla zakończony w 50%", 2);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2,"Posiać marchewkę","Dziurki zrobione, teraz wsypywanie ziarnek", 2);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2,"Kupić pieczywo","Brak przennych bułek i nie wiadomo co dalej zrobić", 3);
+commit ;
+select * from ISSUES;
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3,"Wypachnieć się","Udało się, ale wszystkie oszczędnosci poszły na perfum", 3);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3,"Wstać z łóżka","Pozycja ciała - już pionowa", 4);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3,"Skomponować utwór","Zrobione - AI wykonało robotę", 4);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3,"Posprzątać mieszkanie","Da się przejsc z jednego pokkoju do drugiego", 5);
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3,"Wypić kawę","Zadanie wykonane przed zrobieniem listy", 5);
+commit ;
+select * from ISSUES;
