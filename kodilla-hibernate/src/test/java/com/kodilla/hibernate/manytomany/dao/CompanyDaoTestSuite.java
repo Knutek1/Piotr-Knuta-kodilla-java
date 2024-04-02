@@ -71,16 +71,24 @@ class CompanyDaoTestSuite {
         Employee niuniaClarkson = new Employee("Niunia", "Clarkson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
         Employee usagiKovalevitz = new Employee("Usagi","Kovalevitz");
+        Employee lindaKoval = new Employee("Linda", "Koval");
         employeeDao.save(johnSmith);
         employeeDao.save(stephanieClarkson);
         employeeDao.save(lindaKovalsky);
         employeeDao.save(usagiKovalevitz);
         employeeDao.save(niuniaClarkson);
+        employeeDao.save(lindaKoval);
+
         //when
         List<Employee> employeesWithName = employeeDao.findByName("Clarkson");
+        List<Employee> employeesTextLike = employeeDao.findByLastnameContaining("Koval");
+
         //then
         assertEquals(2,employeesWithName.size());
+        assertEquals(3,employeesTextLike.size());
+
         //clean up
+
         employeeDao.deleteAll();
 
     }
@@ -99,8 +107,10 @@ class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         //when
         List<Company>listCompaniesWithThreeLetters = companyDao.findByFirstThreeLetters("gre");
+        List<Company>listCompanyWithText = companyDao.findByNameContaining("Ma");
         //then
         assertEquals(3,listCompaniesWithThreeLetters.size());
+        assertEquals(3,listCompanyWithText.size());
         //clean up
         companyDao.deleteAll();
 

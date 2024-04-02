@@ -10,6 +10,10 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME,3) = :FIRST_THREE_LETTERS",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.findByTextLike",
+        query = "FROM Company WHERE name LIKE '%am%'"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
