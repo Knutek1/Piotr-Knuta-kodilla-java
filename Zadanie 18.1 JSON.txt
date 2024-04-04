@@ -1,0 +1,13 @@
+{
+"carName": "Passat",
+"carBrand": "Volkswagen",
+"interior": [
+	{"carSeat": {"material": "velvet", "color": "white" }},
+	{"carSeat": {"material": "velvet", "color": "red" }},
+	{"carSeat": {"material": "jacquard", "color": "blue" }},
+	{"carSeat": {"material": "jacquard", "color": "green" }}
+
+],
+"engineCapacity": 1781 
+
+}
