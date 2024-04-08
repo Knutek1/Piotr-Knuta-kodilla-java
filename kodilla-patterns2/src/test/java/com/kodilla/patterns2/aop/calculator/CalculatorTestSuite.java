@@ -13,8 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class CalculatorTestSuite {
 
-    private static final Logger LOGGER =
-            LoggerFactory.getLogger(CalculatorTestSuite.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorTestSuite.class);
 
     @Autowired
     private Calculator calculator;
