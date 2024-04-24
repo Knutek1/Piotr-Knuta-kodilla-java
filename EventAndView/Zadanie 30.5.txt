@@ -1,0 +1,31 @@
+CREATE TABLE STATS (
+                       STAT_ID int(11) NOT NULL AUTO_INCREMENT,
+                       STAT_DATE datetime NOT NULL,
+                       STAT VARCHAR(20) NOT NULL,
+                       VALUE int(11) NOT NULL,
+                       PRIMARY KEY (STAT_ID)
+
+);
+
+
+
+
+DROP VIEW IF EXISTS BESTSELLERS_COUNT;
+CREATE VIEW BESTSELLERS_COUNT (number_of_bestsellers) AS
+SELECT COUNT(*) FROM  BOOKS BK
+WHERE BK.BESTSELLER = true;
+select * from BESTSELLERS_COUNT;
+
+DROP EVENT IF EXISTS UPDATE_BESTSELLERS;
+USE KODILLA_COURSE;
+CREATE EVENT UPDATE_BESTSELLERS
+    ON SCHEDULE EVERY 1 MINUTE
+    DO
+    BEGIN
+        DECLARE BsNumber INT;
+        CALL UpdateBestsellers();
+      SELECT * FROM BESTSELLERS_COUNT into BsNumber;
+        INSERT INTO STATS (STAT_DATE, STAT, VALUE)
+            VALUE (CURDATE(),'BESTSELLERS',BsNumber);
+        COMMIT ;
+    end;
